@@ -1,0 +1,5 @@
+name: Redirect login
+type: module
+description: 'Redirect user by role.'
+package: Other
+core: 8.x

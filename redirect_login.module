@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Hooks for candidate webform.
+ */
+
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_user_login().
+ *
+ */
+function redirect_login_user_login($account) {
+  $url = '/';
+
+  if ($account->hasRole('member')) {
+    $url = '/dashboard';
+  }
+
+  if ($account->hasRole('editor') || $account->hasRole('administrator')) {
+    $url = '/dashboard-editor';
+  }
+  $response = new RedirectResponse($url);
+  $response->send();
+  return;
+}
